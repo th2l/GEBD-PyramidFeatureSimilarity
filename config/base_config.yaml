@@ -1,0 +1,26 @@
+OUT_DIR: '/mnt/Work/Dataset/Gebd-ACCV22/train_logs/tmp'
+DATA_LOADER:
+  DATA_DIR: '/mnt/SharedProject/Dataset/LOVEU_22/gebd'
+  IMG_SIZE: 224
+MODEL:
+  BACKBONE: 'resnet_1'
+  SEQ_LEN: 50
+  LEVEL: 's3'   # 0, 1, 2, 3
+  FREEZE_BATCHNORM: True
+  FREEZE_BACKBONE: False
+  FROM_LOGITS: False
+TRAIN:
+  BATCH_SIZE: 4
+  EPOCHS: 5
+  MIXED_PRECISION: True
+TEST:
+  BATCH_SIZE: 4
+OPTIM:
+  NAME: 'adam'
+  WEIGHT_DECAY: 1e-4
+  BASE_LR: 1e-5
+  WARMUP_STEPS: 1.
+  LR_SCHEDULER: 'cosine'  # 'cosine'
+  LR_SCHEDULER_DECAY_STEPS: 4
+  LR_SCHEDULER_ALPHA: 0.01
+LOGGER: 'wandb' # Tensorboard or wandb
